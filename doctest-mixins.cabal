@@ -1,4 +1,4 @@
-cabal-version: 1.12
+cabal-version: 2.0
 
 -- This file has been generated from package.yaml by hpack version 0.33.0.
 --
@@ -26,33 +26,26 @@ custom-setup
    cabal-doctest >= 1 && <1.1
 
 library
-  main-is: Main.hs
   other-modules:
       Paths_doctest_mixins
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+      , morley-prelude
   default-language: Haskell2010
   exposed-modules:
     Main
-
+  mixins:
+      base hiding (Prelude)
 
 test-suite doctests
   type: exitcode-stdio-1.0
   main-is: Main.hs
---   other-modules:
---       Paths_morley
   hs-source-dirs:
-      doctests, cabal-doctest
---   default-extensions: AllowAmbiguousTypes ApplicativeDo BangPatterns BlockArguments ConstraintKinds DataKinds DefaultSignatures DeriveAnyClass DeriveDataTypeable DeriveFoldable DeriveFunctor DeriveGeneric DeriveTraversable DerivingStrategies DerivingVia EmptyCase FlexibleContexts FlexibleInstances GADTs GeneralizedNewtypeDeriving LambdaCase MultiParamTypeClasses MultiWayIf NamedFieldPuns NegativeLiterals NumericUnderscores NumDecimals OverloadedLabels OverloadedStrings PatternSynonyms PolyKinds QuasiQuotes RankNTypes RecordWildCards RecursiveDo ScopedTypeVariables StandaloneDeriving StrictData TemplateHaskell TupleSections TypeApplications TypeFamilies TypeOperators UndecidableInstances UndecidableSuperClasses ViewPatterns
---   ghc-options: -Weverything -Wno-missing-exported-signatures -Wno-missing-import-lists -Wno-missed-specialisations -Wno-all-missed-specialisations -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wno-monomorphism-restriction -Wno-implicit-prelude -threaded -eventlog -rtsopts "-with-rtsopts=-N -A64m -AL256m"
---   build-tool-depends:
---       tasty-discover:tasty-discover
+      doctests
   build-depends:
       base >=4.7 && <5
     , doctest
     , doctest-mixins
---   mixins:
---       base hiding (Prelude)
   default-language: Haskell2010
